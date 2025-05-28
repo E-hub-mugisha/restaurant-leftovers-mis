@@ -31,16 +31,26 @@ class LeftoverController extends Controller
             'status' => 'required|in:available,reserved,served',
         ]);
 
+        $menu = Menu::findOrFail($request->menu_id); // 🛠️ Fixed semicolon
+
+        $discount = $request->discount ?? 0;
+        $menuPrice = $menu->price;
+
+        // Calculate total amount after applying discount (percentage)
+        $total_amount = $menuPrice - ($menuPrice * $discount / 100);
+
         Leftover::create([
             'menu_id' => $request->menu_id,
             'quantity' => $request->quantity,
-            'discount' => $request->discount ?? 0,
+            'discount' => $discount,
             'pickup_by' => $request->pickup_by,
             'status' => $request->status,
+            'amount' => $total_amount, // ✅ Assumes 'amount' column exists in leftovers table
         ]);
 
         return redirect()->back()->with('success', 'Leftover added successfully.');
     }
+
 
     // Update leftover
     public function update(Request $request, $id)
@@ -55,16 +65,24 @@ class LeftoverController extends Controller
             'status' => 'required|in:available,reserved,served',
         ]);
 
+        $menu = Menu::findOrFail($request->menu_id);
+        $discount = $request->discount ?? 0;
+
+        // Calculate the total amount after applying discount
+        $total_amount = $menu->price - ($menu->price * $discount / 100);
+
         $leftover->update([
             'menu_id' => $request->menu_id,
             'quantity' => $request->quantity,
-            'discount' => $request->discount ?? 0,
+            'discount' => $discount,
             'pickup_by' => $request->pickup_by,
             'status' => $request->status,
+            'amount' => $total_amount,
         ]);
 
         return redirect()->back()->with('success', 'Leftover updated successfully.');
     }
+
 
     // Delete leftover
     public function destroy($id)
@@ -92,7 +110,7 @@ class LeftoverController extends Controller
 
         return redirect()->back()->with('success', 'Reservation status updated successfully.');
     }
-   
+
     public function destroyReservation($id)
     {
         $reservation = Reservation::findOrFail($id);

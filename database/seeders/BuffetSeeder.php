@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Buffet;
 use App\Models\Menu;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BuffetSeeder extends Seeder
@@ -17,22 +16,63 @@ class BuffetSeeder extends Seeder
         // Fetch existing menus
         $menus = Menu::all();
 
-        // Ensure there are some menus available
         if ($menus->isEmpty()) {
-            $this->command->warn('No menus found. Please add some menus before seeding buffets.');
+            $this->command->warn('No menus found. Please seed menus first.');
             return;
         }
 
-        // Create 10 sample buffets and link them to random menus
-        foreach (range(1, 10) as $index) {
+        $buffets = [
+            [
+                'name' => 'Traditional Rwandan Buffet',
+                'description' => 'Includes isombe, ugali, beans, and grilled chicken. A taste of home!',
+            ],
+            [
+                'name' => 'Vegetarian Delight',
+                'description' => 'A healthy mix of steamed vegetables, plantains, beans, and fruit salad.',
+            ],
+            [
+                'name' => 'Sunday Special',
+                'description' => 'Roast beef, mashed potatoes, gravy, salads, and dessert. Perfect for family day!',
+            ],
+            [
+                'name' => 'African Fusion Buffet',
+                'description' => 'East and West African flavors: jollof rice, chapati, tilapia, and peanut stew.',
+            ],
+            [
+                'name' => 'Breakfast Bonanza',
+                'description' => 'Pancakes, eggs, sausages, fruits, coffee, and tea — perfect for a fresh start.',
+            ],
+            [
+                'name' => 'Seafood Fiesta',
+                'description' => 'A delicious mix of grilled fish, prawns, calamari, and seaweed salad.',
+            ],
+            [
+                'name' => 'Kids Special Buffet',
+                'description' => 'Mac & cheese, mini burgers, fries, juice, and cupcakes — for the little ones.',
+            ],
+            [
+                'name' => 'Evening Chill Buffet',
+                'description' => 'Grilled meats, local beers, fresh salads, and finger foods. Great for after work!',
+            ],
+            [
+                'name' => 'Vegan Buffet',
+                'description' => 'Tofu stir-fry, lentils, fresh avocado, chapati, and hibiscus juice.',
+            ],
+            [
+                'name' => 'Italian Treat Buffet',
+                'description' => 'Pasta, garlic bread, lasagna, and a selection of cheeses and desserts.',
+            ],
+        ];
+
+        foreach ($buffets as $buffet) {
             Buffet::create([
-                'name' => 'Buffet ' . $index,
-                'description' => 'A delicious buffet with a variety of food options.',
-                'is_available' => rand(0, 1) == 1,  // Random availability (true or false)
-                'menu_id' => $menus->random()->id, // Link to a random menu
+                'name' => $buffet['name'],
+                'description' => $buffet['description'],
+                'is_available' => rand(0, 1),
+                'menu_id' => $menus->random()->id,
             ]);
         }
 
-        $this->command->info('Buffets seeded successfully.');
+        $this->command->info('Realistic buffets seeded successfully.');
     }
 }

@@ -9,7 +9,7 @@ class Reservation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'leftover_id', 'reserved_at'];
+    protected $fillable = ['user_id', 'leftover_id', 'reserved_at','amount'];
 
     public function user()
     {
@@ -21,4 +21,8 @@ class Reservation extends Model
         return $this->belongsTo(Leftover::class);
     }
     
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
 }

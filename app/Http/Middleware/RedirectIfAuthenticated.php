@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
                 if ($user->role === 'admin') {
                     return redirect()->route('admin.dashboard.index');
                 } elseif ($user->role === 'user') {
-                    return redirect()->route('user.dashboard.index');
+                    return redirect()->route('home');
                 }
 
                 return redirect('/'); // fallback

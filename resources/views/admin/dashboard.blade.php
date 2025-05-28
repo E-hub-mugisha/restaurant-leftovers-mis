@@ -120,8 +120,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="content">
-                    <h5 class="mb-0">Top Visitors by Country</h5>
-                    <p class="text-muted">Visitor stats this year</p>
+                    <h5 class="mb-0">Top Users Reserved</h5>
                     <div class="table-responsive">
                         <table class="table table-hover" id="dataTables-example">
                             <thead>

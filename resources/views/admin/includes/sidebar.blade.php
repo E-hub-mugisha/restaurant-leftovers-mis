@@ -1,6 +1,7 @@
 <nav id="sidebar" class="active">
     <div class="sidebar-header">
-        <img src="assets/img/bootstraper-logo.png" alt="bootraper logo" class="app-logo">
+        <!-- <img src="assets/img/bootstraper-logo.png" alt="bootraper logo" class="app-logo"> -->
+        <h2 class="text-center text-black">Fresheat</h2>
     </div>
     <ul class="list-unstyled components text-secondary">
         <li>
@@ -29,12 +30,22 @@
         <li>
             <a href="{{ route('admin.buffets.index') }}"><i class="fas fa-chart-bar"></i> Buffets</a>
         </li>
-        
+
         <li>
             <a href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')"><i class="fas fa-user-friends"></i>Users</a>
         </li>
         <li>
             <a href="{{ route('admin.subscribers.index') }}" :active="request()->routeIs('admin.subscribers.index')"><i class="fas fa-cog"></i>Subscribers</a>
+        </li>
+        <li>
+            <a href="{{ route('admin.reports.index') }}" :active="request()->routeIs('admin.reports.index')">
+                <i class="fas fa-chart-line"></i> Reports & Analytics
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.payments.index') }}" :active="request()->routeIs('admin.payments.index')">
+                <i class="fas fa-card"></i> Payments
+            </a>
         </li>
     </ul>
 </nav>

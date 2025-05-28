@@ -33,6 +33,10 @@ Route::post('/feedback/{menu}', [App\Http\Controllers\Frontend\MenuController::c
 Route::get('/menu/reservations/{id}', [App\Http\Controllers\Frontend\MenuController::class, 'reservations'])->name('menu.reservation');
 Route::post('/menu/reservations/store/{id}', [App\Http\Controllers\Frontend\MenuController::class, 'storeReservation'])->name('menu.reservation.store')->middleware('auth');
 
+Route::get('payment/process', [LeftoverController::class, 'payment'])->name('payment.process');
+Route::get('/payment/{reservation}', [LeftoverController::class, 'payment'])->name('payment.process');
+Route::get('/after/payment', [LeftoverController::class, 'afterPayment'])->name('after.payment');
+Route::get('/reservation/payment/callback', [LeftoverController::class, 'paymentLeftoverCallback'])->name('handlePayment.callback');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -62,7 +66,7 @@ Route::middleware(['auth',])->group(function () {
     Route::get('/admin/leftovers', [App\Http\Controllers\Admin\LeftoverController::class, 'index'])->name('admin.leftovers.index');
     Route::post('/admin/leftovers/store', [App\Http\Controllers\Admin\LeftoverController::class, 'store'])->name('admin.leftovers.store');
     Route::delete('/admin/leftovers/destroy/{leftover}', [App\Http\Controllers\Admin\LeftoverController::class, 'destroy'])->name('admin.leftovers.destroy');
-    Route::get('/admin/leftovers/update/{leftover}', [App\Http\Controllers\Admin\LeftoverController::class, 'update'])->name('admin.leftovers.update');
+    Route::put('/admin/leftovers/update/{leftover}', [App\Http\Controllers\Admin\LeftoverController::class, 'update'])->name('admin.leftovers.update');
     Route::get('/admin/leftovers/{id}/reservations', [App\Http\Controllers\Admin\LeftoverController::class, 'showReservations'])->name('admin.leftovers.reservations');
     Route::get('/admin/leftovers/generate-report', [App\Http\Controllers\Admin\LeftoverController::class, 'generateReport'])->name('leftovers.report.generate');
     Route::post('/admin/leftovers/export-report', [App\Http\Controllers\Admin\LeftoverController::class, 'exportReport'])->name('leftovers.report.export');
@@ -86,6 +90,9 @@ Route::middleware(['auth',])->group(function () {
     Route::get('/admin/settings', [App\Http\Controllers\Admin\RestaurantSettingController::class, 'edit'])->name('admin.settings.edit');
     Route::post('/admin/settings', [App\Http\Controllers\Admin\RestaurantSettingController::class, 'update'])->name('admin.settings.update');
 
+    Route::get('/admin/reports', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.reports.index');
+
+    Route::get('/payments', [DashboardController::class, 'payments'])->name('admin.payments.index');
 });
 
 

@@ -18,7 +18,8 @@ $settings = \App\Models\RestaurantSetting::first();
                 <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                     <div class="offcanvas__logo">
                         <a href="{{ route('home') }}">
-                            <img src="assets/img/logo/logo.svg" alt="logo-img">
+                            <!-- <img src="assets/img/logo/logo.svg" alt="logo-img"> -->
+                            <h2 class="text-center text-white">{{ $settings->restaurant_name }}</h2>
                         </a>
                     </div>
                     <div class="offcanvas__close">
@@ -28,7 +29,7 @@ $settings = \App\Models\RestaurantSetting::first();
                     </div>
                 </div>
                 <p class="text d-none d-lg-block">
-                {{ $settings->about_us }}
+                    {{ $settings->about_us }}
                 </p>
                 <div class="offcanvas-gallery-area d-none d-xl-block">
                     <div class="offcanvas-gallery-items">
@@ -122,7 +123,8 @@ $settings = \App\Models\RestaurantSetting::first();
         <div class="main-header-wrapper-2">
             <div class="logo-image">
                 <a href="{{ route('home') }}">
-                    <img src="assets/img/logo/logoWhite.svg" alt="img">
+                    <!-- <img src="assets/img/logo/logoWhite.svg" alt="img"> -->
+                    <h2 class="text-center text-white">{{ $settings->restaurant_name }}</h2>
                 </a>
             </div>
             <div class="main-header-items">
@@ -130,8 +132,8 @@ $settings = \App\Models\RestaurantSetting::first();
                     <div class="text-white top-text">Welcome To <span class="text-theme-color2">{{ $settings->restaurant_name }}</div>
                     <div class="text-white top-text"><i class="fa-solid fa-location-dot me-3"></i> {{ $settings->address }}</div>
                     <div class="social-icon d-flex align-items-center">
-                        <div class="text-white pe-2 top-text"><i class="fa-solid fa-user me-3"></i> 
-                        <a href="{{ route('login') }}"> Login / Register</a>
+                        <div class="text-white pe-2 top-text"><i class="fa-solid fa-user me-3"></i>
+                            <a href="{{ route('login') }}"> Login / Register</a>
                         </div>
                         <span class="text-white top-text">Follow Us:</span>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -145,7 +147,8 @@ $settings = \App\Models\RestaurantSetting::first();
                         <div class="header-main">
                             <div class="logo">
                                 <a href="{{ route('home') }}" class="header-logo">
-                                    <img src="assets/img/logo/logo.svg" alt="logo-img">
+                                    <!-- <img src="assets/img/logo/logo.svg" alt="logo-img"> -->
+                                    <h2 class="text-center text-black">{{ $settings->restaurant_name }}</h2>
                                 </a>
                             </div>
                             <div class="header-left">
@@ -156,31 +159,31 @@ $settings = \App\Models\RestaurantSetting::first();
                                                 <li class="has-dropdown active menu-thumb">
                                                     <a href="{{ route('home') }}">
                                                         Home
-                                                        
+
                                                     </a>
                                                 </li>
                                                 <li class="has-dropdown">
                                                     <a href="{{ route('front-page.about') }}">
                                                         About Us
-                                                        
+
                                                     </a>
                                                 </li>
                                                 <li class="has-dropdown">
                                                     <a href="{{ route('front-page.leftovers') }}">
                                                         Leftovers
-                                                        
+
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('front-page.menu.index') }}">
                                                         Menu
-                                                        
+
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('front-page.contact') }}">
                                                         Contact Us
-                                                        
+
                                                     </a>
                                                 </li>
                                             </ul>

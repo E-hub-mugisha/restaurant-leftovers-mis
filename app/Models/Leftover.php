@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Leftover extends Model
 {
     use HasFactory;
-    protected $fillable = ['menu_id', 'quantity', 'discount', 'pickup_by', 'status'];
+    protected $fillable = ['menu_id', 'quantity', 'discount', 'pickup_by', 'status','amount'];
 
     public function menu()
     {

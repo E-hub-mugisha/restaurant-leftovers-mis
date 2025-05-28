@@ -41,8 +41,9 @@ $settings = \App\Models\RestaurantSetting::first();
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
-                            <a href="index.html">
-                                <img src="assets/img/logo/logoWhite.svg" alt="logo-img">
+                            <a href="{{ route('home') }}">
+                                <!-- <img src="assets/img/logo/logoWhite.svg" alt="logo-img"> -->
+                                 <h2 class="text-center text-white">{{ $settings->restaurant_name }}</h2>
                             </a>
                         </div>
                         <div class="footer-content">
@@ -65,31 +66,25 @@ $settings = \App\Models\RestaurantSetting::first();
                         </div>
                         <ul class="list-area">
                             <li>
-                                <a href="about.html">
+                                <a href="{{ route('front-page.about') }}">
                                     <i class="fa-solid fa-chevrons-right"></i>
                                     About Us
                                 </a>
                             </li>
                             <li>
-                                <a href="gallery.html">
+                                <a href="{{ route('front-page.leftovers') }}">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Our Gallery
+                                    Leftovers
                                 </a>
                             </li>
                             <li>
-                                <a href="blog.html">
+                                <a href="{{ route('front-page.menu.index') }}">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Our Blogs
+                                    Our Menus
                                 </a>
                             </li>
                             <li>
-                                <a href="faq.html">
-                                    <i class="fa-solid fa-chevrons-right"></i>
-                                    FAQ’S
-                                </a>
-                            </li>
-                            <li>
-                                <a href="contact.html">
+                                <a href="{{ route('front-page.contact') }}">
                                     <i class="fa-solid fa-chevrons-right"></i>
                                     Contact Us
                                 </a>
@@ -103,36 +98,19 @@ $settings = \App\Models\RestaurantSetting::first();
                             <h3>Our Menu</h3>
                         </div>
                         <ul class="list-area">
+                            @php
+                            $menus = \App\Models\Menu::latest()->take(4)->get();
+                            @endphp
+
+                            @foreach ($menus as $menu)
                             <li>
-                                <a href="menu.html">
-                                    <i class="fa-solid fa-chevrons-right"></i>
-                                    Burger King
+                                <a href="{{ route('front-page.menu.show', $menu->id) }}">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    {{ $menu->name }}
                                 </a>
                             </li>
-                            <li>
-                                <a href="menu.html">
-                                    <i class="fa-solid fa-chevrons-right"></i>
-                                    Pizza king
-                                </a>
-                            </li>
-                            <li>
-                                <a href="menu.html">
-                                    <i class="fa-solid fa-chevrons-right"></i>
-                                    Fresh Food
-                                </a>
-                            </li>
-                            <li>
-                                <a href="menu.html">
-                                    <i class="fa-solid fa-chevrons-right"></i>
-                                    Vegetable
-                                </a>
-                            </li>
-                            <li>
-                                <a href="menu.html">
-                                    <i class="fa-solid fa-chevrons-right"></i>
-                                    Desserts
-                                </a>
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -157,7 +135,7 @@ $settings = \App\Models\RestaurantSetting::first();
                             </div>
                             <div class="form-control style2 mt-3">
                                 <input id="checkbox" name="checkbox" type="checkbox">
-                                <label for="checkbox">I agree to the <a href="contact.html">Privacy Policy.
+                                <label for="checkbox">I agree to the <a href="{{ route('front-page.contact') }}">Privacy Policy.
                                     </a></label>
                             </div>
                         </form>
@@ -170,16 +148,16 @@ $settings = \App\Models\RestaurantSetting::first();
         <div class="container">
             <div class="footer-wrapper d-flex align-items-center justify-content-between">
                 <p class="wow fadeInLeft" data-wow-delay=".3s">
-                    © All Copyright 2025 by <a href="index.html">FreshEat</a>
+                    © All Copyright 2025 by <a href="{{ route('home') }}">FreshEat</a>
                 </p>
                 <ul class="brand-logo wow fadeInRight" data-wow-delay=".5s">
                     <li>
-                        <a class="text-white" href="contact.html">
+                        <a class="text-white" href="{{ route('front-page.contact') }}">
                             Terms & Condition
                         </a>
                     </li>
                     <li>
-                        <a class="text-white" href="contact.html">
+                        <a class="text-white" href="{{ route('front-page.contact') }}">
                             Privacy Policy
                         </a>
                     </li>

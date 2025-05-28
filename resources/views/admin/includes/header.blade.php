@@ -7,21 +7,61 @@
             <li class="nav-item dropdown">
                 <div class="nav-dropdown">
                     <a href="#" id="nav1" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                        @php
+                        $pendingCount = \App\Models\Reservation::where('status', 'pending')->count();
+                        @endphp
+                        @if($pendingCount > 0)
+                        <span class="badge bg-danger">{{ $pendingCount }}</span>
+                        @endif
+                        <i style="font-size: .8em;" class="fas fa-caret-down"></i>
                     </a>
+
                     <div class="dropdown-menu dropdown-menu-end nav-link-menu" aria-labelledby="nav1">
                         <ul class="nav-list">
-                            <li><a href="" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a></li>
+                            <li>
+                                <a href="{{ route('admin.leftovers.index') }}" class="dropdown-item">
+                                    <i class="fas fa-utensils"></i> Manage Leftovers
+                                </a>
+                            </li>
                             <div class="dropdown-divider"></div>
-                            <li><a href="" class="dropdown-item"><i class="fas fa-database"></i> Back ups</a></li>
+
+                            <li>
+                                <a href="{{ route('admin.reservations.index') }}" class="dropdown-item">
+                                    <i class="fas fa-concierge-bell"></i>
+                                    Pending Reservations
+                                    @if($pendingCount > 0)
+                                    <span class="badge bg-warning text-dark float-end">{{ $pendingCount }}</span>
+                                    @endif
+                                </a>
+                            </li>
                             <div class="dropdown-divider"></div>
-                            <li><a href="" class="dropdown-item"><i class="fas fa-cloud-download-alt"></i> Updates</a></li>
+
+                            <li>
+                                <a href="{{ route('admin.users.index') }}" class="dropdown-item">
+                                    <i class="fas fa-users"></i> Manage Users
+                                </a>
+                            </li>
                             <div class="dropdown-divider"></div>
-                            <li><a href="" class="dropdown-item"><i class="fas fa-user-shield"></i> Roles</a></li>
+
+                            <li>
+                                <a href="{{ route('admin.reports.index') }}" class="dropdown-item">
+                                    <i class="fas fa-chart-line"></i> Reports & Analytics
+                                </a>
+                            </li>
+                            <div class="dropdown-divider"></div>
+
+                            <li>
+                                <a href="{{ route('admin.settings.edit') }}" class="dropdown-item">
+                                    <i class="fas fa-cog"></i> System Settings
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </li>
+
             <li class="nav-item dropdown">
                 <div class="nav-dropdown">
                     <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
