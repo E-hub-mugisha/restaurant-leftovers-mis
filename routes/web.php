@@ -39,7 +39,10 @@ Route::get('/after/payment', [LeftoverController::class, 'afterPayment'])->name(
 Route::get('/reservation/payment/callback', [LeftoverController::class, 'paymentLeftoverCallback'])->name('handlePayment.callback');
 
 Route::get('/test-sms', function (TwilioSmsService $smsService) {
-    $to = '+250782390919'; // Replace with your test number
+    if (app()->environment('local')) {
+        $to = '+15005550006'; // Twilio test number that simulates success
+    }
+
     $message = "Test SMS from Laravel at " . now();
 
     $smsService->send($to, $message);
