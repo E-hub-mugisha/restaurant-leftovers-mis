@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LeftoverController;
 use Illuminate\Support\Facades\Route;
-
+use App\Services\TwilioSmsService;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +37,15 @@ Route::get('payment/process', [LeftoverController::class, 'payment'])->name('pay
 Route::get('/payment/{reservation}', [LeftoverController::class, 'payment'])->name('payment.process');
 Route::get('/after/payment', [LeftoverController::class, 'afterPayment'])->name('after.payment');
 Route::get('/reservation/payment/callback', [LeftoverController::class, 'paymentLeftoverCallback'])->name('handlePayment.callback');
+
+Route::get('/test-sms', function (TwilioSmsService $smsService) {
+    $to = '+250782390919'; // Replace with your test number
+    $message = "Test SMS from Laravel at " . now();
+
+    $smsService->send($to, $message);
+
+    return 'SMS sent (if all went well).';
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
