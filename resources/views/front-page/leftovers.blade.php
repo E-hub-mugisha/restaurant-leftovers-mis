@@ -8,39 +8,11 @@
         <div class="shop-wrapper style1">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-3 col-lg-4 order-2 order-md-1 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="main-sidebar">
-                            <div class="single-sidebar-widget">
-                                <h5 class="widget-title">
-                                    Search
-                                </h5>
-                                <div class="search-widget">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search here">
-                                        <button><i class="fa-light fa-magnifying-glass"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget">
-                                <h5 class="widget-title">
-                                    Search
-                                </h5>
-                                <ul class="tagcloud">
-                                    <li><a href="shop.html">Cheese</a></li>
-                                    <li><a href="shop.html">Cocktail</a></li>
-                                    <li><a href="shop.html">Drink</a></li>
-                                    <li><a href="shop.html">Uncategorized</a></li>
-                                    <li><a href="shop.html">Pizza</a></li>
-                                    <li><a href="shop.html">Non Veg</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-9 col-lg-8 order-1 order-md-2 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="col-xl-12 col-lg-12 order-1 order-md-2 wow fadeInUp" data-wow-delay=".5s">
                         <div class="sort-bar">
                             <div class="row g-sm-0 gy-20 justify-content-between align-items-center">
                                 <div class="col-md">
-                                    <p class="woocommerce-result-count">Showing 1 - 12 of 30 Results</p>
+                                    <p class="woocommerce-result-count">Showing Results</p>
                                 </div>
 
                                 <div class="col-md-auto">
@@ -82,7 +54,7 @@
                                         <div class="social-profile">
                                             <span class="plus-btn"> <a href="#"> <i class="fa-regular fa-heart"></i></a></span>
                                             <ul>
-                                                <li><a href="cart.html"><i class="fa-regular fa-basket-shopping-simple"></i></a></li>
+                                                <li><a href="#"><i class="fa-regular fa-basket-shopping-simple"></i></a></li>
                                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-light fa-eye"></i></a></li>
                                             </ul>
                                         </div>
@@ -92,7 +64,7 @@
                                         <a href="">
                                             <h3>{{ $leftover->menu->name }}</h3>
                                         </a>
-                                        <p>The registration fee</p>
+                                        <p>The Food Price</p>
                                         <h6>${{ number_format($leftover->menu->price, 2) }}</h6>
                                         <button
                                             class="theme-btn style6 mt-3"
@@ -129,7 +101,7 @@
                                                                     <div class="product-about">
                                                                         <div class="title-wrapper">
                                                                             <h2 class="product-title">{{ $leftover->menu->name }}</h2>
-                                                                            <div class="price">$69</div>
+                                                                            <div class="price">${{ number_format($leftover->menu->price, 2) }}</div>
                                                                         </div>
 
                                                                         <div class="product-rating">
@@ -183,16 +155,7 @@
                         </div>
 
                         <div class="page-nav-wrap text-center">
-                            <ul>
-                                <li><a class="previous" href="shop.html"><i
-                                            class="fa-sharp fa-light fa-arrow-left-long"></i></a></li>
-                                <li><a class="page-numbers" href="shop.html">1</a></li>
-                                <li><a class="page-numbers active" href="shop.html">2</a></li>
-                                <li><a class="page-numbers" href="shop.html">3</a></li>
-                                <li><a class="page-numbers" href="shop.html">...</a></li>
-                                <li><a class="next" href="shop.html"><i
-                                            class="fa-sharp fa-light fa-arrow-right-long"></i></a></li>
-                            </ul>
+                           
                         </div>
                     </div>
                 </div>

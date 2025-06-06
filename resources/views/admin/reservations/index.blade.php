@@ -32,7 +32,7 @@
                         <td>
                             <span class="badge 
                             @if($reservation->status == 'pending') bg-warning 
-                            @elseif($reservation->status == 'approved') bg-success 
+                            @elseif($reservation->status == 'reserved') bg-success 
                             @elseif($reservation->status == 'cancelled') bg-danger 
                             @else bg-secondary @endif">
                                 {{ ucfirst($reservation->status) }}
@@ -95,9 +95,10 @@
                                             <label for="status" class="form-label">Status</label>
                                             <select name="status" class="form-select" required>
                                                 <option value="pending" {{ $reservation->status === 'pending' ? 'selected' : '' }}>Pending</option>
-                                                <option value="approved" {{ $reservation->status === 'approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="reserved" {{ $reservation->status === 'reserved' ? 'selected' : '' }}>Reserved</option>
                                                 <option value="cancelled" {{ $reservation->status === 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                                                <option value="completed" {{ $reservation->status === 'completed' ? 'selected' : '' }}>Completed</option>
+                                                <option value="served" {{ $reservation->status === 'served' ? 'selected' : '' }}>Served</option>
+                                                <option value="paid" {{ $reservation->status === 'paid' ? 'selected' : '' }}>Paid</option>
                                             </select>
                                         </div>
                                     </div>
@@ -125,9 +126,10 @@
                                             <label for="status" class="form-label">Reservation Status</label>
                                             <select name="status" class="form-select" required>
                                                 <option value="pending" {{ $reservation->status === 'pending' ? 'selected' : '' }}>Pending</option>
-                                                <option value="approved" {{ $reservation->status === 'approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="reserved" {{ $reservation->status === 'reserved' ? 'selected' : '' }}>Reserved</option>
                                                 <option value="cancelled" {{ $reservation->status === 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                                                <option value="completed" {{ $reservation->status === 'completed' ? 'selected' : '' }}>Completed</option>
+                                                <option value="served" {{ $reservation->status === 'served' ? 'selected' : '' }}>Served</option>
+                                                <option value="paid" {{ $reservation->status === 'paid' ? 'selected' : '' }}>Paid</option>
                                             </select>
                                         </div>
                                     </div>

@@ -1,6 +1,10 @@
 @extends('layouts.guest')
 @section('content')
 
+@php
+$settings = \App\Models\RestaurantSetting::first();
+@endphp
+
 <!-- Contact Us Section    S T A R T -->
 <div class="contact-us-section section-padding fix">
     <div class="contact-box-wrapper style2">
@@ -11,8 +15,7 @@
                         <div class="contact-icon"><img class="rounded-circle" src="assets/img/icon/phone2.png"
                                 alt="icon"></div>
                         <h3 class="title">Phone Number</h3>
-                        <p>+123 (5246) 2356 65</p>
-                        <p> +123 (214) 321</p>
+                        <p>{{ $settings->phone }}</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-3">
@@ -20,8 +23,7 @@
                         <div class="contact-icon"><img class="rounded-circle" src="assets/img/icon/gmail2.png"
                                 alt="icon"></div>
                         <h3 class="title">Email Address</h3>
-                        <p>info.needhelp@gmail.com</p>
-                        <p>hello@gmail.com.</p>
+                        <p>{{ $settings->email }}</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-3">
@@ -29,7 +31,7 @@
                         <div class="contact-icon"><img class="rounded-circle" src="assets/img/icon/location2.png"
                                 alt="icon"></div>
                         <h3 class="title">Our Address</h3>
-                        <p>8502 Preston Rd. Inglewood, Maine 98380</p>
+                        <p>{{ $settings->address }}</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-3">
@@ -37,7 +39,7 @@
                         <div class="contact-icon"><img class="rounded-circle" src="assets/img/icon/clock2.png"
                                 alt="icon"></div>
                         <h3 class="title">Opening Time</h3>
-                        <p>Mon - Fri 09:00 AM 05: PM <br> Sat - Sun close</p>
+                        <p>{{ $settings->opening_hours }}</p>
                     </div>
                 </div>
             </div>

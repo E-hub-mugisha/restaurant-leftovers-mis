@@ -210,7 +210,7 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-lg-6 d-flex align-items-center justify-content-center justify-content-xl-start">
                         <div class="about-thumb mb-5 mb-lg-0">
-                            <img src="assets/img/about/aboutThumb2_1.png" alt="Food MIS Overview">
+                            <img src="assets/img/about/restaurant.jpg" alt="Food MIS Overview" style="width: 90%; height: auto;">
                             <div class="video-wrap">
                                 <a href="https://www.youtube.com/watch?v=f2Gzr8sAGB8"
                                     class="play-btn popup-video"><img class="cir36"
@@ -304,7 +304,7 @@
                                     <h3>{{ $menu->name }}</h3>
                                 </a>
                                 <div class="star"><img src="assets/img/icon/star2.svg" alt="icon"></div>
-                                <div class="text">The registration fee</div>
+                                <div class="text">The Food Price</div>
                                 <h6>${{ $menu->price }}</h6>
                                 <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $menu->id }}" class="theme-btn style6"> View Details <i class="fa-regular fa-basket-shopping"></i></a>
                             </div>
@@ -363,7 +363,7 @@
                                                                                 class="fa-solid fa-minus"></i></button>
                                                                     </div>
                                                                 </div>
-                                                                <a href="cart.html" class="theme-btn">Add to Cart<i
+                                                                <a href="#" class="theme-btn">Add to Cart<i
                                                                         class="fa-regular fa-cart-shopping bg-transparent text-white"></i></a>
                                                                 <a href="wishlist.html" class="theme-btn style5 border-0">ADD TO
                                                                     wishlist<i class="fa-sharp fa-solid fa-heart"></i></a>
@@ -425,7 +425,7 @@
                     <div class="social-profile">
                         <span class="plus-btn"> <a href="#"> <i class="fa-regular fa-heart"></i></a></span>
                         <ul>
-                            <li><a href="cart.html"><i class="fa-regular fa-basket-shopping-simple"></i></a></li>
+                            <li><a href="#"><i class="fa-regular fa-basket-shopping-simple"></i></a></li>
                             <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-light fa-eye"></i></a></li>
                         </ul>
                     </div>
@@ -435,7 +435,7 @@
                     <a href="">
                         <h3>{{ $leftover->menu->name }}</h3>
                     </a>
-                    <p>The registration fee</p>
+                    <p>The Food Price</p>
                     <h6>${{ number_format($leftover->menu->price, 2) }}</h6>
                     <button
                         class="theme-btn style6 mt-3"

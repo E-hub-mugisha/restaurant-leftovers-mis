@@ -174,7 +174,7 @@
                     <div class="social-profile">
                         <span class="plus-btn"> <a href="#"> <i class="fa-regular fa-heart"></i></a></span>
                         <ul>
-                            <li><a href="cart.html"><i class="fa-regular fa-basket-shopping-simple"></i></a></li>
+                            <li><a href="#"><i class="fa-regular fa-basket-shopping-simple"></i></a></li>
                             <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-light fa-eye"></i></a></li>
                         </ul>
                     </div>
@@ -184,7 +184,7 @@
                     <a href="">
                         <h3>{{ $leftover->menu->name }}</h3>
                     </a>
-                    <p>The registration fee</p>
+                    <p>The Food Price</p>
                     <h6>${{ number_format($leftover->menu->price, 2) }}</h6>
                     <button
                         class="theme-btn style6 mt-3"

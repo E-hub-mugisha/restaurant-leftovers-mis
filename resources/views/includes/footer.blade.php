@@ -148,7 +148,7 @@ $settings = \App\Models\RestaurantSetting::first();
         <div class="container">
             <div class="footer-wrapper d-flex align-items-center justify-content-between">
                 <p class="wow fadeInLeft" data-wow-delay=".3s">
-                    © All Copyright 2025 by <a href="{{ route('home') }}">FreshEat</a>
+                    © All Copyright 2025 by <a href="{{ route('home') }}">Foodie</a>
                 </p>
                 <ul class="brand-logo wow fadeInRight" data-wow-delay=".5s">
                     <li>

@@ -8,7 +8,8 @@
             <div class="col-lg-6">
                 <div class="account-card bg-color2 p-3 p-sm-5">
                     <div class="logo text-center">
-                        <img src="assets/img/logo/accountLogo.png" alt="logo">
+                        <!-- <img src="assets/img/logo/accountLogo.png" alt="logo"> -->
+                         <h2 class="text-theme-color">Foodie</h2>
                     </div>
                     <h3>Create account</h3>
                     <p>Please Enter Your Details</p>
@@ -53,7 +54,7 @@
             </div>
             <div class="col-lg-6 d-flex align-items-center justify-content-center">
                 <div class="account-thumb">
-                    <img src="assets/img/profile/profile.png" alt="img">
+                    <img src="{{ asset('/images/restaurant.jpg') }}" alt="img">
                 </div>
             </div>
         </div>

@@ -8,130 +8,11 @@
         <div class="shop-wrapper style1">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-3 col-lg-4 order-2 order-md-1 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="main-sidebar">
-                            <div class="single-sidebar-widget">
-                                <h5 class="widget-title">
-                                    Search
-                                </h5>
-                                <div class="search-widget">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search here">
-                                        <button><i class="fa-light fa-magnifying-glass"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget">
-                                <h5 class="widget-title">
-                                    Search
-                                </h5>
-                                <ul class="tagcloud">
-                                    <li><a href="shop.html">Cheese</a></li>
-                                    <li><a href="shop.html">Cocktail</a></li>
-                                    <li><a href="shop.html">Drink</a></li>
-                                    <li><a href="shop.html">Uncategorized</a></li>
-                                    <li><a href="shop.html">Pizza</a></li>
-                                    <li><a href="shop.html">Non Veg</a></li>
-                                </ul>
-                            </div>
-                            <div class="single-sidebar-widget">
-                                <h5 class="widget-title">
-                                    Filter By Price
-                                </h5>
-                                <div class="range__barcustom">
-                                    <div class="slider">
-                                        <div class="progress" style="left: 15.29%; right: 58.9%;"></div>
-                                    </div>
-                                    <div class="range-input">
-                                        <input type="range" class="range-min" min="0" max="10000" value="2500">
-                                        <input type="range" class="range-max" min="100" max="10000" value="7500">
-                                    </div>
-                                    <div class="range-items">
-                                        <div class="price-input">
-                                            <div class="price-wrapper d-flex align-items-center gap-1">
-                                                <div class="field">
-                                                    <span>Price:</span>
-                                                </div>
-                                                <div class="field">
-                                                    <span>$</span>
-                                                    <input type="number" class="input-min" value="100">
-                                                </div>
-                                                <div class="separators">-</div>
-                                                <div class="field">
-                                                    <span>$</span>
-                                                    <input type="number" class="input-max" value="1000">
-                                                </div>
-                                                <a href="shop.html" class="filter-btn mt-2 me-3">Filter</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget">
-                                <h5 class="widget-title">
-                                    Filter By Price
-                                </h5>
-
-                                <div class="recent-box">
-                                    <div class="recent-thumb">
-                                        <img src="assets/img/shop/recentThumb1_1.png" alt="menu-thumb">
-                                    </div>
-                                    <div class="recent-content">
-                                        <a href="shop.html"> Ruti With Beef Slice </a>
-                                        <div class="star"><img src="assets/img/icon/star3.svg" alt="icon"></div>
-                                        <div class="price">
-                                            <div class="regular-price">35$</div>
-                                            <div class="offer-price">25$</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="recent-box">
-                                    <div class="recent-thumb">
-                                        <img src="assets/img/shop/recentThumb1_2.png" alt="menu-thumb">
-                                    </div>
-                                    <div class="recent-content">
-                                        <a href="shop.html"> Fast Food Combo </a>
-                                        <div class="star"><img src="assets/img/icon/star3.svg" alt="icon"></div>
-                                        <div class="price">
-                                            <div class="regular-price">95$</div>
-                                            <div class="offer-price">75$</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="recent-box">
-                                    <div class="recent-thumb">
-                                        <img src="assets/img/shop/recentThumb1_3.png" alt="menu-thumb">
-                                    </div>
-                                    <div class="recent-content">
-                                        <a href="shop.html"> divicious Salad </a>
-                                        <div class="star"><img src="assets/img/icon/star3.svg" alt="icon"></div>
-                                        <div class="price">
-                                            <div class="regular-price">65$</div>
-                                            <div class="offer-price">55$</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="recent-box">
-                                    <div class="recent-thumb">
-                                        <img src="assets/img/shop/recentThumb1_4.png" alt="menu-thumb">
-                                    </div>
-                                    <div class="recent-content">
-                                        <a href="shop.html"> Chiness Pasta </a>
-                                        <div class="star"><img src="assets/img/icon/star3.svg" alt="icon"></div>
-                                        <div class="price">
-                                            <div class="regular-price">45$</div>
-                                            <div class="offer-price">35$</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-9 col-lg-8 order-1 order-md-2 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="col-xl-12 col-lg-12 order-1 order-md-2 wow fadeInUp" data-wow-delay=".5s">
                         <div class="sort-bar">
                             <div class="row g-sm-0 gy-20 justify-content-between align-items-center">
                                 <div class="col-md">
-                                    <p class="woocommerce-result-count">Showing 1 - 12 of 30 Results</p>
+                                    <p class="woocommerce-result-count">Showing Results</p>
                                 </div>
 
                                 <div class="col-md-auto">
@@ -179,7 +60,7 @@
                                                 <h3>{{ $menu->name }}</h3>
                                             </a>
                                             <div class="star"><img src="assets/img/icon/star2.svg" alt="icon"></div>
-                                            <div class="text">The registration fee</div>
+                                            <div class="text">The Food Price</div>
                                             <h6>${{ $menu->price }}</h6>
                                             <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $menu->id }}" class="theme-btn style6"> Quick Details <i class="fa-regular fa-basket-shopping"></i></a>
                                         </div>
@@ -226,7 +107,7 @@
                                                                         <p class="text">{{ $menu->description }}</p>
 
                                                                         <div class="actions">
-                                                                            
+
                                                                             <a href="{{ route('menu.reservation', $menu->id ) }}" class="theme-btn">Reserve<i
                                                                                     class="fa-regular fa-cart-shopping bg-transparent text-white"></i></a>
                                                                             <a href="{{ route('front-page.menu.show', $menu->id) }}" class="theme-btn style5 border-0">Details<i class="fa-sharp fa-solid fa-heart"></i></a>
@@ -260,52 +141,13 @@
 
 
                         <div class="page-nav-wrap text-center">
-                            <ul>
-                                <li><a class="previous" href="shop.html"><i
-                                            class="fa-sharp fa-light fa-arrow-left-long"></i></a></li>
-                                <li><a class="page-numbers" href="shop.html">1</a></li>
-                                <li><a class="page-numbers active" href="shop.html">2</a></li>
-                                <li><a class="page-numbers" href="shop.html">3</a></li>
-                                <li><a class="page-numbers" href="shop.html">...</a></li>
-                                <li><a class="next" href="shop.html"><i
-                                            class="fa-sharp fa-light fa-arrow-right-long"></i></a></li>
-                            </ul>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <h2 class="mb-4">Today's Menu</h2>
-
-    <div class="row">
-        @forelse($menus as $menu)
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $menu->name }}</h5>
-                    <p class="card-text">{{ $menu->description }}</p>
-                    <p class="text-primary font-weight-bold">Price: ${{ $menu->price }}</p>
-
-                    @if($menu->feedbacks->count() > 0)
-                    <p>
-                        Rating:
-                        @php
-                        $avg = number_format($menu->feedbacks->avg('rating'), 1);
-                        @endphp
-                        {{ $avg }} ⭐ ({{ $menu->feedbacks->count() }} reviews)
-                    </p>
-                    @endif
-                    <a href="{{ route('front-page.menu.show', $menu->id) }}">{{ $menu->name }}</a>
-                    <span class="badge badge-success">Available</span>
-                </div>
-            </div>
-        </div>
-        @empty
-        <div class="col-12">
-            <p>No menu items available today.</p>
-        </div>
-        @endforelse
-    </div>
+    
 </div>
 @endsection
