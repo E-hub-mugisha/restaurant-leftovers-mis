@@ -20,11 +20,13 @@
                             <!-- Name -->
                             <div class="col-12">
                                 <input id="name" type="text" name="name" required autofocus autocomplete="name" placeholder="name" />
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
 
                             <!-- Email Address -->
                             <div class="col-12">
                                 <input id="email" type="email" name="email" required autofocus autocomplete="username" placeholder="Email">
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
 
                             <!-- Password -->
@@ -32,6 +34,7 @@
                                 <div class="form-ctl">
                                     <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Password">
                                     <div class="icon"><i class="fa-sharp fa-solid fa-eye-slash"></i></div>
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                 </div>
                             </div>
 
@@ -39,6 +42,18 @@
                                 <div class="form-ctl">
                                     <input type="password" id="password_confirmation" name="password_confirmation" required autocomplete="current-password" placeholder="Confirm Password">
                                     <div class="icon"><i class="fa-sharp fa-solid fa-eye-slash"></i></div>
+                                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-ctl mb-3">
+                                    <label class="form-check-label" for="role">Select Role</label>
+                                    <select class="form-select" name="role" id="role">
+                                        <option value="admin">Admin</option>
+                                        <option value="user">User</option>
+                                    </select>
+                                    <x-input-error :messages="$errors->get('role')" class="mt-2" />
                                 </div>
                             </div>
 

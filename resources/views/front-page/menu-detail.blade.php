@@ -12,7 +12,7 @@
                         <div class="col-lg-6">
                             <div class="product-big-img bg-color2">
                                 <div class="dishes-thumb">
-                                    <img src="{{ asset('assets/img/dishes/dishes3_1.png') }}" alt="thumb">
+                                    <img src="{{ asset('image/menu/' . $menu->images) }}" alt="thumb">
                                     <div class="circle-shape d-none d-md-block">
                                         <img class="cir36" src="{{ asset('assets/img/food-items/circleShape2.png') }}" alt="shape">
                                     </div>
@@ -179,7 +179,7 @@
                         </ul>
                     </div>
                     <div class="dishes-thumb">
-                        <img src="{{ asset('assets/img/dishes/dishes1_1.png') }}" alt="thmb">
+                        <img src="{{ asset('image/menu/' . $leftover->menu->images) }}" alt="thmb">
                     </div>
                     <a href="">
                         <h3>{{ $leftover->menu->name }}</h3>

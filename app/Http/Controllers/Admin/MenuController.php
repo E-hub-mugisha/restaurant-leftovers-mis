@@ -28,9 +28,21 @@ class MenuController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required|numeric',
+            'description' => 'nullable|string|max:255',
+            'available' => 'required|boolean',
         ]);
 
-        Menu::create($request->only('name', 'description', 'price', 'available'));
+        $data = $request->all();
+
+        if ($images = $request->file('images')) {
+            $menuPath = 'image/menu/';
+            $menuImage = date('YmdHis') . "." . $images->getClientOriginalExtension();
+            $images->move($menuPath, $menuImage);
+            $data['images'] = "$menuImage";
+        }
+
+        Menu::create($data);
+
         return back()->with('success', 'Menu added!');
     }
 
@@ -39,9 +51,21 @@ class MenuController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required|numeric',
+            'images' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-        $menu->update($request->only('name', 'description', 'price', 'available'));
+        if ($images = $request->file('images')) {
+            $menuPath = 'image/menu/';
+            $menuImage = date('YmdHis') . "." . $images->getClientOriginalExtension();
+            $images->move($menuPath, $menuImage);
+            $data['images'] = "$menuImage";
+        } else {
+            $data['images'] = $menu->images; // Keep the existing image if no new one is uploaded
+        }
+        $data = $request->only(['name', 'description', 'price', 'available', 'images']);
+
+        $menu->update($data);
+
         return back()->with('success', 'Menu updated!');
     }
 
@@ -107,7 +131,7 @@ class MenuController extends Controller
     {
         if (auth()->user()->role === 'admin') {
             // Admin: See all feedback
-        $menuReservations = MenuReservation::with(['user', 'menu'])->latest()->paginate(10);
+            $menuReservations = MenuReservation::with(['user', 'menu'])->latest()->paginate(10);
         } else {
             // Regular user: See only their own feedback
             $menuReservations = MenuReservation::with('menu')

@@ -18,7 +18,6 @@ $settings = \App\Models\RestaurantSetting::first();
                 <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                     <div class="offcanvas__logo">
                         <a href="{{ route('home') }}">
-                            <!-- <img src="assets/img/logo/logo.svg" alt="logo-img"> -->
                             <h2 class="text-center text-white">{{ $settings->restaurant_name }}</h2>
                         </a>
                     </div>
@@ -72,7 +71,7 @@ $settings = \App\Models\RestaurantSetting::first();
                                 <i class="fal fa-envelope"></i>
                             </div>
                             <div class="offcanvas__contact-text">
-                                <a href="tel:+013-003-003-9993"><span
+                                <a href="mailto:{{ $settings->email }}"><span
                                         class="mailto:{{ $settings->email }}">{{ $settings->email }}</span></a>
                             </div>
                         </li>
@@ -94,11 +93,11 @@ $settings = \App\Models\RestaurantSetting::first();
                         </li>
                     </ul>
                     <div class="header-button mt-4">
-                        <a href="shop.html" class="theme-btn">
+                        <a href="{{ route('front-page.leftovers') }}" class="theme-btn">
                             <span class="button-content-wrapper d-flex align-items-center justify-content-center">
                                 <span class="button-icon"><i
                                         class="fa-sharp fa-regular fa-cart-shopping bg-transparent text-white me-2"></i></span>
-                                <span class="button-text">ORDER NOW</span>
+                                <span class="button-text">Leftovers</span>
                             </span>
                         </a>
                     </div>
@@ -132,9 +131,23 @@ $settings = \App\Models\RestaurantSetting::first();
                     <div class="text-white top-text">Welcome To <span class="text-theme-color2">{{ $settings->restaurant_name }}</div>
                     <div class="text-white top-text"><i class="fa-solid fa-location-dot me-3"></i> {{ $settings->address }}</div>
                     <div class="social-icon d-flex align-items-center">
+                        @if (auth()->check())
+                        @if (auth()->user()->role == 'admin')
+                        <div class="text-white pe-2 top-text">
+                            <i class="fa-solid fa-user me-3"></i>
+                            <a href="{{ route('admin.dashboard.index') }}"> {{ auth()->user()->name }}</a>
+                        </div>
+                        @else
+                        <div class="text-white pe-2 top-text">
+                            <i class="fa-solid fa-user me-3"></i>
+                            <a href="{{ route('home') }}"> {{ auth()->user()->name }}</a>
+                        </div>
+                        @endif
+                        @else
                         <div class="text-white pe-2 top-text"><i class="fa-solid fa-user me-3"></i>
                             <a href="{{ route('login') }}"> Login / Register</a>
                         </div>
+                        @endif
                         <span class="text-white top-text">Follow Us:</span>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -147,7 +160,6 @@ $settings = \App\Models\RestaurantSetting::first();
                         <div class="header-main">
                             <div class="logo">
                                 <a href="{{ route('home') }}" class="header-logo">
-                                    <!-- <img src="assets/img/logo/logo.svg" alt="logo-img"> -->
                                     <h2 class="text-center text-black">{{ $settings->restaurant_name }}</h2>
                                 </a>
                             </div>
@@ -192,7 +204,6 @@ $settings = \App\Models\RestaurantSetting::first();
                                 </div>
                             </div>
                             <div class="header-right d-flex justify-content-end align-items-center">
-                                <a href="#0" class="search-trigger search-icon"><i class="fal fa-search"></i></a>
 
                                 <div class="header__hamburger d-xl-block my-auto">
                                     <div class="sidebar__toggle">
@@ -207,18 +218,3 @@ $settings = \App\Models\RestaurantSetting::first();
         </div>
     </div>
 </header>
-
-
-<!-- Search Area Start -->
-<div class="search-wrap">
-    <div class="search-inner">
-        <i class="fas fa-times search-close" id="search-close"></i>
-        <div class="search-cell">
-            <form method="get">
-                <div class="search-field-holder">
-                    <input type="search" class="main-search-input" placeholder="Search...">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

@@ -51,11 +51,12 @@
                                 <div class="dishes-card-wrap style2">
                                     @foreach( $menus as $menu)
                                     <div class="dishes-card style2 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                        <div class="dishes-thumb justify-content-center">
-                                            <img src="assets/img/dishes/dishes2_1.png" alt="thumb">
-                                            <div class="circle-shape"><img class="cir36" src="assets/img/food-items/circleShape.png" alt="shape"></div>
-                                        </div>
+                                       
                                         <div class="dishes-content">
+                                            <div class="justify-content-center mb-3">
+                                                <img src="{{ asset('image/menu/' . $menu->images) }}" alt="thumb" height="100" width="100">
+                                                
+                                            </div>
                                             <a href="{{ route('front-page.menu.show', $menu->id) }}">
                                                 <h3>{{ $menu->name }}</h3>
                                             </a>
@@ -141,13 +142,13 @@
 
 
                         <div class="page-nav-wrap text-center">
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </div>
 @endsection

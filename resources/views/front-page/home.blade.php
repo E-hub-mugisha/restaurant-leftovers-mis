@@ -295,11 +295,11 @@
                     <div class="dishes-card-wrap style1 mb-60">
                         @foreach( $menus as $menu)
                         <div class="dishes-card style2 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <div class="dishes-thumb">
-                                <img src="assets/img/dishes/dishes2_1.png" alt="thumb">
-                                <div class="circle-shape"><img class="cir36" src="assets/img/food-items/circleShape.png" alt="shape"></div>
-                            </div>
                             <div class="dishes-content">
+                                <div class="justify-content-center mb-3">
+                                    <img src="{{ asset('image/menu/' . $menu->images) }}" alt="thumb" height="100" width="100">
+
+                                </div>
                                 <a href="{{ route('front-page.menu.show', $menu->id) }}">
                                     <h3>{{ $menu->name }}</h3>
                                 </a>
@@ -323,7 +323,7 @@
                                                     <div class="modal-thumb">
                                                         <div class="product-big-img bg-color2">
                                                             <div class="dishes-thumb">
-                                                                <img class="img-fluid" src="assets/img/dishes/dishes3_1.png"
+                                                                <img class="img-fluid" src="{{ asset('image/menu/' . $menu->images) }}"
                                                                     alt="thumb">
                                                                 <div class="circle-shape"><img class="cir36"
                                                                         src="assets/img/food-items/circleShape2.png" alt="shape"></div>
@@ -430,7 +430,7 @@
                         </ul>
                     </div>
                     <div class="dishes-thumb">
-                        <img src="assets/img/dishes/dishes1_1.png" alt="thmb">
+                        <img src="{{ asset('image/menu/' . $leftover->menu->images) }}" alt="thmb">
                     </div>
                     <a href="">
                         <h3>{{ $leftover->menu->name }}</h3>
@@ -461,8 +461,7 @@
                                             <div class="modal-thumb">
                                                 <div class="product-big-img bg-color2">
                                                     <div class="dishes-thumb">
-                                                        <img class="img-fluid" src="assets/img/dishes/dishes3_1.png" alt="thumb">
-                                                        <div class="circle-shape"><img class="cir36" src="assets/img/food-items/circleShape2.png" alt="shape"></div>
+                                                        <img class="img-fluid" src="{{ asset('image/menu/' . $leftover->menu->images) }}" alt="thumb">
                                                     </div>
                                                 </div>
                                             </div>

@@ -59,7 +59,7 @@
                                             </ul>
                                         </div>
                                         <div class="dishes-thumb">
-                                            <img src="assets/img/dishes/dishes1_1.png" alt="thmb">
+                                            <img src="{{ asset('image/menu/' . $leftover->menu->images) }}" alt="thmb">
                                         </div>
                                         <a href="">
                                             <h3>{{ $leftover->menu->name }}</h3>
@@ -90,8 +90,7 @@
                                                                 <div class="modal-thumb">
                                                                     <div class="product-big-img bg-color2">
                                                                         <div class="dishes-thumb">
-                                                                            <img class="img-fluid" src="assets/img/dishes/dishes3_1.png" alt="thumb">
-                                                                            <div class="circle-shape"><img class="cir36" src="assets/img/food-items/circleShape2.png" alt="shape"></div>
+                                                                            <img class="img-fluid" src="{{ asset('image/menu/' . $leftover->menu->images) }}" alt="thumb">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -110,7 +109,7 @@
                                                                                     out of 5 based on <span class="rating">1</span> customer
                                                                                     rating</span>
                                                                             </div>
-                                                                            <a href="shop-details.html" class="woocommerce-review-link">(<span class="count">2</span> customer reviews)</a>
+                                                                            <a href="#" class="woocommerce-review-link">(<span class="count">2</span> customer reviews)</a>
                                                                         </div>
                                                                         <p class="text">{{ $leftover->menu->description ?? 'No description available' }}</p>
 
