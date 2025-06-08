@@ -1,5 +1,5 @@
 @php
-$settings = \App\Models\RestaurantSetting::first();
+    $settings = \App\Models\RestaurantSetting::first();
 @endphp
 <!--<< Mouse Cursor Start >>-->
 <div class="mouse-cursor cursor-outer"></div>
@@ -80,7 +80,8 @@ $settings = \App\Models\RestaurantSetting::first();
                                 <i class="fal fa-clock"></i>
                             </div>
                             <div class="offcanvas__contact-text">
-                                <a target="_blank" href="#">{{ $settings->days_open }}, {{ $settings->opening_hours }}</a>
+                                <a target="_blank" href="#">{{ $settings->days_open }},
+                                    {{ $settings->opening_hours }}</a>
                             </div>
                         </li>
                         <li class="d-flex align-items-center">
@@ -128,25 +129,48 @@ $settings = \App\Models\RestaurantSetting::first();
             </div>
             <div class="main-header-items">
                 <div class="header-top-wrapper-2">
-                    <div class="text-white top-text">Welcome To <span class="text-theme-color2">{{ $settings->restaurant_name }}</div>
-                    <div class="text-white top-text"><i class="fa-solid fa-location-dot me-3"></i> {{ $settings->address }}</div>
+                    <div class="text-white top-text">Welcome To <span
+                            class="text-theme-color2">{{ $settings->restaurant_name }}</div>
+                    <div class="text-white top-text"><i class="fa-solid fa-location-dot me-3"></i>
+                        {{ $settings->address }}</div>
                     <div class="social-icon d-flex align-items-center">
-                        @if (auth()->check())
-                        @if (auth()->user()->role == 'admin')
-                        <div class="text-white pe-2 top-text">
-                            <i class="fa-solid fa-user me-3"></i>
-                            <a href="{{ route('admin.dashboard.index') }}"> {{ auth()->user()->name }}</a>
-                        </div>
+                        @if(auth()->check())
+                            @if(auth()->check())
+                                <div class="dropdown text-white pe-2 top-text">
+                                    <a class="dropdown-toggle text-white text-decoration-none" href="#" role="button"
+                                        id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-user me-2"></i>
+                                        {{ auth()->user()->name }}
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                        @if(auth()->user()->role == 'admin')
+                                            <li>
+                                                <a class="dropdown-item text-black"
+                                                    href="{{ route('admin.dashboard.index') }}">Dashboard</a>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <a class="dropdown-item text-black"
+                                                    href="{{ route('home') }}">Home</a>
+                                            </li>
+                                        @endif
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif
+
                         @else
-                        <div class="text-white pe-2 top-text">
-                            <i class="fa-solid fa-user me-3"></i>
-                            <a href="{{ route('home') }}"> {{ auth()->user()->name }}</a>
-                        </div>
-                        @endif
-                        @else
-                        <div class="text-white pe-2 top-text"><i class="fa-solid fa-user me-3"></i>
-                            <a href="{{ route('login') }}"> Login / Register</a>
-                        </div>
+                            <div class="text-white pe-2 top-text"><i class="fa-solid fa-user me-3"></i>
+                                <a href="{{ route('login') }}"> Login / Register</a>
+                            </div>
                         @endif
                         <span class="text-white top-text">Follow Us:</span>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>

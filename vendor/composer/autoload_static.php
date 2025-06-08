@@ -684,6 +684,7 @@ class ComposerStaticInit3b130f909d8c7acd5973043a958c243d
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Services\\SmsService' => __DIR__ . '/../..' . '/app/Services/SmsService.php',
+        'App\\Services\\TwilioSmsService' => __DIR__ . '/../..' . '/app/Services/TwilioSmsService.php',
         'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/app/View/Components/AppLayout.php',
         'App\\View\\Components\\GuestLayout' => __DIR__ . '/../..' . '/app/View/Components/GuestLayout.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
