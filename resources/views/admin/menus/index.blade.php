@@ -32,7 +32,7 @@
                     <tr>
                         <td>{{ $menu->name }}</td>
                         <td>{{ $menu->description }}</td>
-                        <td>${{ number_format($menu->price, 2) }}</td>
+                        <td>RWF {{ number_format($menu->price, 2) }}</td>
                         <td>{{ $menu->available ? 'Yes' : 'No' }}</td>
                         <td>
                             @auth

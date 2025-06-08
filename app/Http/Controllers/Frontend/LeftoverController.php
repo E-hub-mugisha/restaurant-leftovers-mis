@@ -25,51 +25,51 @@ class LeftoverController extends Controller
 {
     public function frontendLeftovers()
     {
-        $leftovers = Leftover::with('menu')
-            ->where('status', 'available')
-            ->where('pickup_by', '>=', now())
-            ->orderBy('pickup_by')
-            ->get();
+        $leftovers = Leftover::all();
 
         return view('front-page.leftovers', compact('leftovers'));
     }
 
     public function frontendReserveLeftovers(Request $request, $id)
-    {
-        $leftover = Leftover::findOrFail($id);
+{
+    $request->validate([
+        'quantity' => 'required|integer|min:1',
+    ]);
 
-        // Check if there's enough quantity
-        if ($leftover->quantity < 1) {
-            return redirect()->back()->with('error', 'This leftover is no longer available.');
-        }
+    $leftover = Leftover::lockForUpdate()->findOrFail($id); // Lock row for concurrent safety
 
-        // Prevent duplicate reservation by the same user
-        $alreadyReserved = Reservation::where('user_id', Auth::id())
-            ->where('leftover_id', $leftover->id)
-            ->exists();
-
-        if ($alreadyReserved) {
-            return redirect()->back()->with('info', 'You have already reserved this leftover.');
-        }
-
-        // Decrease leftover quantity
-        $leftover->decrement('quantity');
-
-        // If that was the last one, update status to 'reserved'
-        if ($leftover->quantity <= 0) {
-            $leftover->update(['status' => 'reserved']);
-        }
-
-        // Create reservation record
-        $reservation = Reservation::create([
-            'user_id' => Auth::id(),
-            'leftover_id' => $leftover->id,
-            'reserved_at' => now(),
-            'amount' => $leftover->amount,
-        ]);
-
-        return redirect()->route('payment.process', $reservation->id)->with('success', 'You have reserved this leftover successfully!');
+    if ($leftover->quantity < $request->quantity) {
+        return redirect()->back()->with('error', 'Requested quantity exceeds available stock.');
     }
+
+    $alreadyReserved = Reservation::where('user_id', Auth::id())
+        ->where('leftover_id', $leftover->id)
+        ->exists();
+
+    if ($alreadyReserved) {
+        return redirect()->back()->with('info', 'You have already reserved this leftover.');
+    }
+
+    // Decrease the quantity
+    $leftover->quantity -= $request->quantity;
+    if ($leftover->quantity <= 0) {
+        $leftover->status = 'reserved';
+    }
+    $leftover->save();
+
+    // Create the reservation
+    $reservation = Reservation::create([
+        'user_id' => Auth::id(),
+        'leftover_id' => $leftover->id,
+        'reserved_at' => now(),
+        'quantity' => $request->quantity,
+        'amount' => $leftover->amount * $request->quantity,
+    ]);
+
+    return redirect()->route('payment.process', $reservation->id)
+        ->with('success', 'You have reserved this leftover successfully!');
+}
+
     public function payment(Reservation $reservation)
     {
         return view('front-page.payment', [

@@ -8,7 +8,7 @@
             <div class="col-lg-6">
                 <div class="account-card bg-color2 p-3 p-sm-5">
                     <div class="logo text-center">
-                        <h2 class="text-theme-color">Foodie</h2>
+                        <h2 class="text-theme-color">Active Restaurant</h2>
                     </div>
                     <h3>Create account</h3>
                     <p>Please Enter Your Details</p>

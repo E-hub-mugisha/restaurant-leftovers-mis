@@ -5,7 +5,7 @@
     <h2 class="mb-4">Subscribed Users</h2>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+        <table width="100%" class="table table-hover" id="dataTables-example">
             <thead class="thead-dark">
                 <tr>
                     <th>#</th>

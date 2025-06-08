@@ -8,6 +8,8 @@ use App\Models\Leftover;
 use App\Models\LeftoverSubscription;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use App\Mail\LeftoverSubscribed;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -29,6 +31,9 @@ class HomeController extends Controller
             ['user_id' => auth()->id()],
             ['frequency' => $request->frequency]
         );
+
+        // Send confirmation email
+    Mail::to($request->email)->send(new LeftoverSubscribed($request->frequency));
 
         return redirect()->back()->with('success', 'You have successfully subscribed for leftover alerts!');
     }

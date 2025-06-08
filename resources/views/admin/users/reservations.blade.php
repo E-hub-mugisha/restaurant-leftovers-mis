@@ -7,7 +7,7 @@
     @if($user->reservations->isEmpty())
         <div class="alert alert-warning">No reservations found for this user.</div>
     @else
-        <table class="table table-striped">
+        <table width="100%" class="table table-hover" id="dataTables-example">
             <thead>
                 <tr>
                     <th>Menu Item</th>

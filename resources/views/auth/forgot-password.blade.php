@@ -9,7 +9,7 @@
                 <div class="col-lg-6">
                     <div class="account-card bg-color2 p-3 p-sm-5">
                         <div class="logo text-center">
-                            <img src="assets/img/logo/accountLogo.png" alt="logo">
+                            <h2 class="text-theme-color">Active Restaurant</h2>
                         </div>
                         <div class="mb-4 text-sm text-gray-600">
                             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="account-thumb">
-                        <img src="assets/img/profile/profile.png" alt="img">
+                        <img src="{{ asset('/images/restaurant.jpg') }}" alt="img">
                     </div>
                 </div>
             </div>

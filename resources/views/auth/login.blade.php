@@ -2,6 +2,9 @@
 @section('title', 'Login')
 @section('content')
 
+@php
+    $settings = \App\Models\RestaurantSetting::first();
+@endphp
 <div class="account-section section-padding fix">
     <div class="container">
         <div class="account-wrapper bg-white p-1 p-sm-4">
@@ -9,7 +12,7 @@
                 <div class="col-lg-6">
                     <div class="account-card bg-color2 p-3 p-sm-5">
                         <div class="logo text-center">
-                            <h2 class="text-theme-color">Foodie</h2>
+                            <h2 class="text-theme-color">Active Restaurant</h2>
                         </div>
                         <h3>Welcome Back</h3>
                         <p>Please Enter Your Details</p>

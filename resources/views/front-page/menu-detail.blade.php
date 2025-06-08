@@ -23,7 +23,7 @@
                             <div class="product-about">
                                 <div class="title-wrapper">
                                     <h2 class="product-title">{{ $menu->name }}</h2>
-                                    <div class="price">${{ $menu->price }}</div>
+                                    <div class="price">RWF {{ $menu->price }}</div>
                                 </div>
                                 <div class="product-rating">
                                     @if($menu->available)
@@ -185,7 +185,7 @@
                         <h3>{{ $leftover->menu->name }}</h3>
                     </a>
                     <p>The Food Price</p>
-                    <h6>${{ number_format($leftover->menu->price, 2) }}</h6>
+                    <h6>RWF {{ number_format($leftover->menu->price, 2) }}</h6>
                     <button
                         class="theme-btn style6 mt-3"
                         type="button"

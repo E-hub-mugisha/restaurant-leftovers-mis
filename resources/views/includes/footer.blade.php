@@ -1,6 +1,6 @@
 <!-- Footer Section    S T A R T -->
 @php
-$settings = \App\Models\RestaurantSetting::first();
+    $settings = \App\Models\RestaurantSetting::first();
 @endphp
 <footer class="footer-section bg-title fix">
     <div class="footer-widgets-wrapper">
@@ -42,8 +42,7 @@ $settings = \App\Models\RestaurantSetting::first();
                     <div class="single-footer-widget">
                         <div class="widget-head">
                             <a href="{{ route('home') }}">
-                                <!-- <img src="assets/img/logo/logoWhite.svg" alt="logo-img"> -->
-                                 <h2 class="text-center text-white">{{ $settings->restaurant_name }}</h2>
+                                <h2 class="text-center text-white">{{ $settings->restaurant_name }}</h2>
                             </a>
                         </div>
                         <div class="footer-content">
@@ -99,16 +98,16 @@ $settings = \App\Models\RestaurantSetting::first();
                         </div>
                         <ul class="list-area">
                             @php
-                            $menus = \App\Models\Menu::latest()->take(4)->get();
+                                $menus = \App\Models\Menu::latest()->take(4)->get();
                             @endphp
 
-                            @foreach ($menus as $menu)
-                            <li>
-                                <a href="{{ route('front-page.menu.show', $menu->id) }}">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                    {{ $menu->name }}
-                                </a>
-                            </li>
+                            @foreach($menus as $menu)
+                                <li>
+                                    <a href="{{ route('front-page.menu.show', $menu->id) }}">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                        {{ $menu->name }}
+                                    </a>
+                                </li>
                             @endforeach
 
                         </ul>
@@ -121,24 +120,43 @@ $settings = \App\Models\RestaurantSetting::first();
                         </div>
                         <ul class="list-area">
                             <li class="mb-2">
-                                {{ $settings->days_open }}: <span class="text-theme-color2"> {{ $settings->opening_hours }}</span>
+                                {{ $settings->days_open }}: <span class="text-theme-color2">
+                                    {{ $settings->opening_hours }}</span>
                             </li>
                             <li>
                                 Saturday: <span class="text-theme-color2"> 8am – 12am </span>
                             </li>
                         </ul>
-                        <form action="#" class="mt-4">
-                            <div class="form-control">
-                                <input class="email" type="email" placeholder="Your email address">
-                                <button type="submit" class="submit-btn"><i
-                                        class="fa-solid fa-arrow-right-long"></i></button>
-                            </div>
+                        <form action="{{ route('leftovers.subscribe') }}" method="POST" class="mt-4">
+                            @csrf
+
                             <div class="form-control style2 mt-3">
-                                <input id="checkbox" name="checkbox" type="checkbox">
-                                <label for="checkbox">I agree to the <a href="{{ route('front-page.contact') }}">Privacy Policy.
-                                    </a></label>
+                                <label for="frequency" class="me-2">Alert Frequency:</label>
+                                <select name="frequency" class="form-control" id="frequency" required>
+                                    <option value="">Select frequency</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                </select>
                             </div>
+
+                            <div class="form-control">
+                                <input class="email" name="email" type="email" placeholder="Your email address"
+                                    required>
+                                <button type="submit" class="submit-btn">
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </button>
+                            </div>
+
+                            <div class="form-control style2 mt-3">
+                                <input id="checkbox" name="checkbox" type="checkbox" required>
+                                <label for="checkbox">
+                                    I agree to the <a href="{{ route('front-page.contact') }}">Privacy
+                                        Policy</a>.
+                                </label>
+                            </div>
+
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -148,7 +166,7 @@ $settings = \App\Models\RestaurantSetting::first();
         <div class="container">
             <div class="footer-wrapper d-flex align-items-center justify-content-between">
                 <p class="wow fadeInLeft" data-wow-delay=".3s">
-                    © All Copyright 2025 by <a href="{{ route('home') }}">Foodie</a>
+                    © All Copyright 2025 by <a href="{{ route('home') }}">Active Restaurant</a>
                 </p>
                 <ul class="brand-logo wow fadeInRight" data-wow-delay=".5s">
                     <li>

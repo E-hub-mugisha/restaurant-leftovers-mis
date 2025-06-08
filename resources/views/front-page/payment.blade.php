@@ -48,7 +48,7 @@
 
             <p><strong>Reservation ID:</strong> #{{ $reservation_id }}</p>
             <p><strong>Email:</strong> {{ $email }}</p>
-            <p><strong>Amount:</strong> <span class="text-success">${{ number_format($amount, 2) }}</span></p>
+            <p><strong>Amount:</strong> <span class="text-success">RWF {{ number_format($amount, 2) }}</span></p>
 
             <hr class="my-4">
 

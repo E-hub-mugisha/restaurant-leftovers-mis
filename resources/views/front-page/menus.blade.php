@@ -62,7 +62,7 @@
                                             </a>
                                             <div class="star"><img src="assets/img/icon/star2.svg" alt="icon"></div>
                                             <div class="text">The Food Price</div>
-                                            <h6>${{ $menu->price }}</h6>
+                                            <h6>RWF {{ $menu->price }}</h6>
                                             <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $menu->id }}" class="theme-btn style6"> Quick Details <i class="fa-regular fa-basket-shopping"></i></a>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                                                     <div class="product-about">
                                                                         <div class="title-wrapper">
                                                                             <h2 class="product-title">{{ $menu->name }}</h2>
-                                                                            <div class="price">${{ $menu->price }}</div>
+                                                                            <div class="price">RWF {{ $menu->price }}</div>
                                                                         </div>
 
                                                                         <div class="product-rating">

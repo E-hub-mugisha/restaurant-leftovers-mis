@@ -50,92 +50,149 @@
                                 aria-labelledby="pills-grid-tab" tabindex="0">
                                 <div class="dishes-card-wrap style2">
                                     @forelse($leftovers as $leftover)
-                                    <div class="dishes-card style1 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                        <div class="social-profile">
-                                            <span class="plus-btn"> <a href="#"> <i class="fa-regular fa-heart"></i></a></span>
-                                            <ul>
-                                                <li><a href="#"><i class="fa-regular fa-basket-shopping-simple"></i></a></li>
-                                                <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-light fa-eye"></i></a></li>
-                                            </ul>
+                                        <div class="dishes-card style1 wow fadeInUp" data-wow-delay="0.2s"
+                                            style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                            <div class="social-profile">
+                                                <span class="plus-btn"> <a href="#"> <i
+                                                            class="fa-regular fa-heart"></i></a></span>
+                                                <ul>
+                                                    <li><a href="#"><i
+                                                                class="fa-regular fa-basket-shopping-simple"></i></a>
+                                                    </li>
+                                                    <li><a href="#" data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal"><i
+                                                                class="fa-light fa-eye"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="dishes-thumb">
+                                                <img src="{{ asset('image/menu/' . $leftover->menu->images) }}"
+                                                    alt="thmb" height="50" width="50">
+                                            </div>
+                                            <a href="">
+                                                <h3>{{ $leftover->menu->name }}</h3>
+                                            </a>
+                                            <p>The Food Price</p>
+                                            <h6>RWF {{ number_format($leftover->menu->price, 2) }}</h6>
+                                            <button class="theme-btn style6 mt-3" type="button" data-bs-toggle="modal"
+                                                data-bs-target="#confirmReserveModal{{ $leftover->id }}"
+                                                {{ $leftover->quantity < 1 ? 'disabled' : '' }}>
+                                                {{ $leftover->quantity < 1 ? 'Unavailable' : 'Reserve Now' }}
+                                            </button>
                                         </div>
-                                        <div class="dishes-thumb">
-                                            <img src="{{ asset('image/menu/' . $leftover->menu->images) }}" alt="thmb">
-                                        </div>
-                                        <a href="">
-                                            <h3>{{ $leftover->menu->name }}</h3>
-                                        </a>
-                                        <p>The Food Price</p>
-                                        <h6>${{ number_format($leftover->menu->price, 2) }}</h6>
-                                        <button
-                                            class="theme-btn style6 mt-3"
-                                            type="button"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#confirmReserveModal{{ $leftover->id }}"
-                                            {{ $leftover->quantity < 1 ? 'disabled' : '' }}>
-                                            {{ $leftover->quantity < 1 ? 'Unavailable' : 'Reserve Now' }}
-                                        </button>
-                                    </div>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="confirmReserveModal{{ $leftover->id }}" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog  modal-dialog-centered">
-                                            <div class="modal-content pb-3 pe-3">
-                                                <div class="modal-header border-0">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="container">
-                                                        <div class="row gy-5">
-                                                            <div class="col-xxl-6">
-                                                                <div class="modal-thumb">
-                                                                    <div class="product-big-img bg-color2">
-                                                                        <div class="dishes-thumb">
-                                                                            <img class="img-fluid" src="{{ asset('image/menu/' . $leftover->menu->images) }}" alt="thumb">
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="confirmReserveModal{{ $leftover->id }}"
+                                            tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog  modal-dialog-centered">
+                                                <div class="modal-content pb-3 pe-3">
+                                                    <div class="modal-header border-0">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <div class="row gy-5">
+                                                                <div class="col-xxl-6">
+                                                                    <div class="modal-thumb">
+                                                                        <div class="product-big-img bg-color2">
+                                                                            <div class="dishes-thumb">
+                                                                                <img class="img-fluid"
+                                                                                    src="{{ asset('image/menu/' . $leftover->menu->images) }}"
+                                                                                    alt="thumb">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-xxl-6">
-                                                                <div class="modal-details">
-                                                                    <div class="product-about">
-                                                                        <div class="title-wrapper">
-                                                                            <h2 class="product-title">{{ $leftover->menu->name }}</h2>
-                                                                            <div class="price">${{ number_format($leftover->menu->price, 2) }}</div>
-                                                                        </div>
-
-                                                                        <div class="product-rating">
-                                                                            <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5">
-                                                                                <span style="width:100%">Rated <strong class="rating">5.00</strong>
-                                                                                    out of 5 based on <span class="rating">1</span> customer
-                                                                                    rating</span>
+                                                                <div class="col-xxl-6">
+                                                                    <div class="modal-details">
+                                                                        <div class="product-about">
+                                                                            <div class="title-wrapper">
+                                                                                <h2 class="product-title">
+                                                                                    {{ $leftover->menu->name }}</h2>
+                                                                                <div class="price">RWF
+                                                                                    {{ number_format($leftover->menu->price, 2) }}
+                                                                                </div>
                                                                             </div>
-                                                                            <a href="#" class="woocommerce-review-link">(<span class="count">2</span> customer reviews)</a>
-                                                                        </div>
-                                                                        <p class="text">{{ $leftover->menu->description ?? 'No description available' }}</p>
 
-                                                                        <div class="actions">
-                                                                            <div class="quantity">
-                                                                                <p><strong>Quantity Available:</strong> {{ $leftover->quantity }}</p>
-                                                                                @if($leftover->discount)
-                                                                                <p><strong>Discount:</strong> {{ $leftover->discount }}%</p>
-                                                                                @endif
-
-                                                                                <p><strong>Pickup Time:</strong> {{ \Carbon\Carbon::parse($leftover->pickup_by)->format('M d, Y h:i A') }}</p>
+                                                                            <div class="product-rating">
+                                                                                <div class="star-rating" role="img"
+                                                                                    aria-label="Rated 5.00 out of 5">
+                                                                                    <span style="width:100%">Rated
+                                                                                        <strong
+                                                                                            class="rating">5.00</strong>
+                                                                                        out of 5 based on <span
+                                                                                            class="rating">1</span>
+                                                                                        customer
+                                                                                        rating</span>
+                                                                                </div>
+                                                                                <a href="#"
+                                                                                    class="woocommerce-review-link">(<span
+                                                                                        class="count">2</span> customer
+                                                                                    reviews)</a>
                                                                             </div>
-                                                                            <form action="{{ route('front-page.leftovers.reserve', $leftover->id) }}" method="POST">
-                                                                                @csrf
-                                                                                <button type="submit" class="theme-btn" {{ $leftover->quantity < 1 ? 'disabled' : '' }}> {{ $leftover->quantity < 1 ? 'Unavailable' : 'Reserve Now' }}<i class="fa-regular fa-cart-shopping bg-transparent text-white"></i></button>
-                                                                            </form>
+                                                                            <p class="text">
+                                                                                {{ $leftover->menu->description ?? 'No description available' }}
+                                                                            </p>
 
-                                                                        </div>
-                                                                        <div class="share">
-                                                                            <h6>share with friends</h6>
-                                                                            <ul class="social-media">
-                                                                                <li> <a href="https://www.facebook.com/"> <i class="fa-brands fa-facebook-f"></i> </a> </li>
-                                                                                <li> <a href="https://www.youtube.com/"> <i class="fa-brands fa-youtube"></i> </a> </li>
-                                                                                <li> <a href="https://www.x.com/"> <i class="fa-brands fa-twitter"></i> </a> </li>
-                                                                                <li> <a href="https://www.instagram.com/"> <i class="fa-brands fa-instagram"></i> </a> </li>
-                                                                            </ul>
+                                                                            <div class="actions">
+                                                                                <div class="quantity">
+                                                                                    <p><strong>Quantity
+                                                                                            Available:</strong>
+                                                                                        {{ $leftover->quantity }}</p>
+                                                                                    @if($leftover->discount)
+                                                                                        <p><strong>Discount:</strong>
+                                                                                            {{ $leftover->discount }}%
+                                                                                        </p>
+                                                                                    @endif
+
+                                                                                    <p><strong>Pickup Time:</strong>
+                                                                                        {{ \Carbon\Carbon::parse($leftover->pickup_by)->format('M d, Y h:i A') }}
+                                                                                    </p>
+                                                                                </div>
+                                                                                <form
+                                                                                    action="{{ route('front-page.leftovers.reserve', $leftover->id) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+
+                                                                                    <div class="mb-3">
+                                                                                        <label>Quantity</label>
+                                                                                        <input name="quantity"
+                                                                                            type="number"
+                                                                                            class="form-control"
+                                                                                            required>
+                                                                                    </div>
+                                                                                    <button type="submit"
+                                                                                        class="theme-btn"
+                                                                                        {{ $leftover->quantity < 1 ? 'disabled' : '' }}>
+                                                                                        {{ $leftover->quantity < 1 ? 'Unavailable' : 'Reserve Now' }}<i
+                                                                                            class="fa-regular fa-cart-shopping bg-transparent text-white"></i></button>
+                                                                                </form>
+
+                                                                            </div>
+                                                                            <div class="share">
+                                                                                <h6>share with friends</h6>
+                                                                                <ul class="social-media">
+                                                                                    <li> <a
+                                                                                            href="https://www.facebook.com/">
+                                                                                            <i
+                                                                                                class="fa-brands fa-facebook-f"></i>
+                                                                                        </a> </li>
+                                                                                    <li> <a
+                                                                                            href="https://www.youtube.com/">
+                                                                                            <i
+                                                                                                class="fa-brands fa-youtube"></i>
+                                                                                        </a> </li>
+                                                                                    <li> <a href="https://www.x.com/">
+                                                                                            <i
+                                                                                                class="fa-brands fa-twitter"></i>
+                                                                                        </a> </li>
+                                                                                    <li> <a
+                                                                                            href="https://www.instagram.com/">
+                                                                                            <i
+                                                                                                class="fa-brands fa-instagram"></i>
+                                                                                        </a> </li>
+                                                                                </ul>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -145,16 +202,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @empty
-                                    <p>No leftovers available right now.</p>
+                                        <p>No leftovers available right now.</p>
                                     @endforelse
                                 </div>
                             </div>
                         </div>
 
                         <div class="page-nav-wrap text-center">
-                           
+
                         </div>
                     </div>
                 </div>

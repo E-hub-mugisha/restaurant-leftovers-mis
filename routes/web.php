@@ -92,6 +92,9 @@ Route::middleware(['auth',])->group(function () {
     Route::delete('/reservations/{id}/destroy', [App\Http\Controllers\Admin\UsersController::class, 'destroy'])->name('admin.reservations.destroy');
     Route::put('/admin/reservations/{id}', [App\Http\Controllers\Admin\UsersController::class, 'updateReservation'])->name('admin.reservations.update');
 
+    Route::put('/users/{user}', [UsersController::class, 'updateUser'])->name('admin.users.update');
+    Route::delete('/users/{user}', [UsersController::class, 'destroyUser'])->name('admin.users.destroy');
+
     Route::get('/admin/buffets', [App\Http\Controllers\Admin\BuffetController::class, 'index'])->name('admin.buffets.index');
     Route::get('/admin/buffets/create', [App\Http\Controllers\Admin\BuffetController::class, 'create'])->name('admin.buffets.create');
     Route::post('/admin/buffets/store', [App\Http\Controllers\Admin\BuffetController::class, 'store'])->name('admin.buffets.store');

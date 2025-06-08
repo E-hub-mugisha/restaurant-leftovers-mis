@@ -1,7 +1,7 @@
 <nav id="sidebar" class="active">
     <div class="sidebar-header">
         <!-- <img src="assets/img/bootstraper-logo.png" alt="bootraper logo" class="app-logo"> -->
-        <h2 class="text-theme-color" style="color: #EB0029;">Foodie</h2>
+        <h2 class="text-theme-color" style="color: #EB0029; font-size:20px" >Active Restaurant</h2>
     </div>
     <ul class="list-unstyled components text-secondary">
         <li>
