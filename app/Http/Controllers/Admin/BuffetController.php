@@ -32,12 +32,23 @@ class BuffetController extends Controller
             'description' => 'nullable|string',
             'menu_id' => 'required|exists:menus,id',
             'is_available' => 'required|boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-        Buffet::create($request->all());
+        $data = $request->only(['name', 'description', 'menu_id', 'is_available']);
+
+        if ($image = $request->file('image')) {
+            $menuPath = 'image/buffet/';
+            $menuImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path($menuPath), $menuImage);
+            $data['image'] = $menuImage;
+        }
+
+        Buffet::create($data);
 
         return redirect()->route('admin.buffets.index')->with('success', 'Buffet created successfully!');
     }
+
 
     // Show the edit modal
     public function edit($id)
@@ -55,13 +66,27 @@ class BuffetController extends Controller
             'description' => 'nullable|string',
             'menu_id' => 'required|exists:menus,id',
             'is_available' => 'required|boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         $buffet = Buffet::findOrFail($id);
-        $buffet->update($request->all());
+
+        $data = $request->only(['name', 'description', 'menu_id', 'is_available']);
+
+        if ($image = $request->file('image')) {
+            $menuPath = 'image/buffet/';
+            $menuImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path($menuPath), $menuImage);
+            $data['image'] = $menuImage;
+        } else {
+            $data['image'] = $buffet->image;
+        }
+
+        $buffet->update($data);
 
         return redirect()->route('admin.buffets.index')->with('success', 'Buffet updated successfully!');
     }
+
 
     // Delete the buffet
     public function destroy($id)

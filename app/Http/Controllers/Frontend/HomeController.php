@@ -18,7 +18,7 @@ class HomeController extends Controller
         $menus = Menu::all()->take(5);
         $leftovers = Leftover::all()->take(5);
         // Fetch 3 random buffets
-        $buffets = Buffet::inRandomOrder()->take(3)->get();
+        $buffets = Buffet::inRandomOrder()->take(6)->get();
         return view('front-page.home', compact('menus', 'leftovers', 'buffets'));
     }
     public function store(Request $request)

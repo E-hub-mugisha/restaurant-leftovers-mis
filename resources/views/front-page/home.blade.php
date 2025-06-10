@@ -191,7 +191,7 @@
                                 </a>
                             </div>
                             <div class="offer-thumb">
-                                <img class="thumbImg" src="assets/img/offer/offerThumb1_2.png" alt="thumb">
+                                <img class="thumbImg" src="{{ asset('image/buffet/' . $buffet->image) }}" alt="thumb">
                                 <div class="shape float-bob-x"><img src="assets/img/shape/offerShape1_4.png"
                                         alt="shape"></div>
                             </div>

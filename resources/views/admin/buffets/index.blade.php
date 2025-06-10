@@ -15,6 +15,7 @@
             <table width="100%" class="table table-hover" id="dataTables-example">
                 <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Menu</th>
@@ -25,6 +26,11 @@
                 <tbody>
                     @foreach($buffets as $buffet)
                     <tr>
+                        <td>
+                            @if($buffet->image)
+                            <img src="{{ asset('image/buffet/' . $buffet->image) }}" alt="{{ $buffet->name }}" width="100">
+                            @endif
+                        </td>
                         <td>{{ $buffet->name }}</td>
                         <td>{{ $buffet->description }}</td>
                         <td>{{ $buffet->menu->name }}</td>
@@ -52,7 +58,7 @@
     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="{{ route('admin.buffets.store') }}" method="POST">
+                <form action="{{ route('admin.buffets.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="createModalLabel">Create Buffet</h5>
@@ -82,6 +88,10 @@
                                 <option value="0">No</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -97,7 +107,7 @@
     <div class="modal fade" id="editModal{{ $buffet->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $buffet->id }}" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="{{ route('admin.buffets.update', $buffet->id) }}" method="POST">
+                <form action="{{ route('admin.buffets.update', $buffet->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
@@ -127,6 +137,13 @@
                                 <option value="1" {{ $buffet->is_available ? 'selected' : '' }}>Yes</option>
                                 <option value="0" {{ !$buffet->is_available ? 'selected' : '' }}>No</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                            @if($buffet->image)
+                            <img src="{{ asset('image/buffet/' . $buffet->image) }}" alt="{{ $buffet->name }}" width="100" class="mt-2">
+                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">

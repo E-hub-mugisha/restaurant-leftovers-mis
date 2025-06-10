@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Buffet extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'is_available', 'menu_id'];
-    
+    protected $fillable = ['name', 'description', 'is_available', 'menu_id','image'];
+
     protected $casts = [
         'is_available' => 'boolean',
     ];
